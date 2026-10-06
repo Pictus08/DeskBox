@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "Cor de fundo",
+    "Widget.Background.Recent": "Cores recentes",
+    "Tray.CleanDesktop.Hide": "Área de trabalho limpa: ocultar tudo",
+    "Tray.CleanDesktop.Restore": "Restaurar widgets e ícones",
     "Settings.AutoStart.Mode.Title": "Método de inicialização",
     "Settings.AutoStart.Mode.Description": "O modo padrão é gerenciado nos aplicativos de inicialização do Windows; uma tarefa agendada pode tentar iniciar mais cedo.",
     "Settings.AutoStart.Mode.Standard": "Padrão (recomendado)",

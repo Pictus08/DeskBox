@@ -20,6 +20,13 @@ public abstract partial class WidgetWindowBase
         string mode = WidgetForegroundSettings.ResolveMode(
             Config,
             SettingsService.Settings);
+        if (mode == WidgetForegroundSettings.ModeFollowTheme &&
+            CustomWidgetBackground is { } background)
+        {
+            mode = WidgetBackgroundSettings.UseDarkForeground(background)
+                ? WidgetForegroundSettings.ModeDark
+                : WidgetForegroundSettings.ModeLight;
+        }
         Color customColor = WidgetForegroundSettings.ResolveCustomColor(
             Config,
             SettingsService.Settings);
@@ -139,7 +146,11 @@ public abstract partial class WidgetWindowBase
         AccessibilitySettings sender,
         object args)
     {
-        if (!DispatcherQueue.TryEnqueue(ApplyWidgetForegroundAppearance))
+        if (!DispatcherQueue.TryEnqueue(() =>
+            {
+                ApplyBackdropPreference();
+                ApplyWidgetForegroundAppearance();
+            }))
         {
             App.LogVerbose("[WidgetForeground] Could not queue high-contrast refresh.");
         }

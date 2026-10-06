@@ -1056,6 +1056,7 @@ public partial class App : Application
             RunCriticalStartupStep("widget-manager", () =>
             {
                 WidgetManager = new WidgetManager(SettingsService, FileService, OrganizerService, themeService, quickCaptureService, localizationService);
+                WidgetManager.RecoverCleanDesktopState();
                 WidgetManager.TrayLayerStateChanged += UpdateTrayLayerStateText;
                 // Lets a quick-reveal raise promote already-open DeskBox surfaces
                 // (search popup, settings, desktop organization) above the raised
@@ -2897,6 +2898,7 @@ public partial class App : Application
     {
         try
         {
+            WidgetManager?.RecoverCleanDesktopState();
             RefreshQuickCaptureClipboardService(captureCurrent: true);
 
             if (WidgetManager is not null)
@@ -4530,6 +4532,7 @@ public partial class App : Application
     {
         try
         {
+            WidgetManager?.RestoreDesktopIcons();
             await ShutdownCoreAsync();
         }
         catch (Exception ex)

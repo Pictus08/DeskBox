@@ -23,11 +23,22 @@ namespace DeskBox;
 /// </summary>
 public partial class App
 {
+    private MenuFlyoutItem? _trayCleanDesktopItem;
+
     private void CreateTrayIcon()
     {
         var localization = LocalizationService;
         var contextMenu = new MenuFlyout();
         contextMenu.ShouldConstrainToRootBounds = false;
+        _trayCleanDesktopItem = new MenuFlyoutItem
+        {
+            Text = localization.T("Tray.CleanDesktop.Hide"),
+            Width = TrayMenuItemWidth,
+            Icon = new FontIcon { Glyph = "\uE7F4" }
+        };
+        _trayCleanDesktopItem.Click += async (_, _) =>
+            await RunTrayMenuActionAsync(contextMenu, () => ToggleTrayWidgetsAsync("clean-desktop"));
+        contextMenu.Opening += (_, _) => RefreshCleanDesktopMenuText();
         var organizeDesktopItem = new MenuFlyoutItem
         {
             Text = localization.T("Tray.OrganizeDesktop"),
@@ -93,6 +104,8 @@ public partial class App
         exitItem.Click += async (_, _) => await RunTrayMenuActionAsync(contextMenu, ExitApplication);
 
         _trayCreateWidgetItems.Clear();
+        contextMenu.Items.Add(_trayCleanDesktopItem);
+        contextMenu.Items.Add(new MenuFlyoutSeparator());
         contextMenu.Items.Add(organizeDesktopItem);
         contextMenu.Items.Add(new MenuFlyoutSeparator());
         foreach (var descriptor in new WidgetContentFactory(LocalizationService).GetCreateEntryDescriptors())
@@ -754,6 +767,7 @@ public partial class App
 
     private void RefreshTrayMenuText()
     {
+        RefreshCleanDesktopMenuText();
         if (_trayOrganizeDesktopItem is not null)
         {
             _trayOrganizeDesktopItem.Text = LocalizationService.T(
@@ -816,6 +830,17 @@ public partial class App
         _trayIcon.ToolTipText = _widgetsRaisedFromTray
             ? LocalizationService.T("Tray.TooltipRaised")
             : LocalizationService.T("Tray.Tooltip");
+    }
+
+    private void RefreshCleanDesktopMenuText()
+    {
+        if (_trayCleanDesktopItem is not null)
+        {
+            _trayCleanDesktopItem.Text = LocalizationService.T(
+                WidgetManager?.IsCleanDesktopActive == true
+                    ? "Tray.CleanDesktop.Restore"
+                    : "Tray.CleanDesktop.Hide");
+        }
     }
 
     private static string GetCreateEntryText(WidgetContentDescriptor descriptor, LocalizationService localization)

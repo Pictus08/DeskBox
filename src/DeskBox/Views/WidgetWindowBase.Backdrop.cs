@@ -39,11 +39,10 @@ public abstract partial class WidgetWindowBase
         bool isDark = RootElement.ActualTheme == ElementTheme.Dark;
         double surfaceOpacity = Math.Clamp(WidgetOpacity, 0.0, 1.0);
         string requestedMaterialType = SettingsService.Settings.WidgetMaterialType;
-        string materialType = WindowsCompatibilityService.ResolveWidgetMaterialType(
-            requestedMaterialType);
-        var tintColor = materialType == SettingsService.WidgetMaterialTypeSolid
+        string materialType = EffectiveWidgetMaterialType;
+        var tintColor = CustomWidgetBackground ?? (materialType == SettingsService.WidgetMaterialTypeSolid
             ? BuildSolidColorBackdropTintColor(isDark, surfaceOpacity)
-            : BuildNativeBackdropTintColor(isDark);
+            : BuildNativeBackdropTintColor(isDark));
         var signature = new BackdropSignature(
             isDark,
             materialType,

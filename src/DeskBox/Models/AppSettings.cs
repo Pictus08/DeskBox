@@ -327,6 +327,10 @@ public class AppSettings
     /// <inheritdoc cref="WidgetShellSettingsSlice.WidgetForegroundColor"/>
     public string WidgetForegroundColor { get => WidgetShell.WidgetForegroundColor; set => WidgetShell.WidgetForegroundColor = value; }
 
+    /// <inheritdoc cref="WidgetShellSettingsSlice.RecentWidgetBackgroundColors"/>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<string>? RecentWidgetBackgroundColors { get => WidgetShell.RecentWidgetBackgroundColors; set => WidgetShell.RecentWidgetBackgroundColors = value; }
+
     /// <inheritdoc cref="WidgetShellSettingsSlice.WidgetBorderColorMode"/>
     public string WidgetBorderColorMode { get => WidgetShell.WidgetBorderColorMode; set => WidgetShell.WidgetBorderColorMode = value; }
 

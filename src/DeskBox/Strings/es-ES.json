@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "Color de fondo",
+    "Widget.Background.Recent": "Colores recientes",
+    "Tray.CleanDesktop.Hide": "Escritorio limpio: ocultar todo",
+    "Tray.CleanDesktop.Restore": "Restaurar tarjetas e iconos",
     "Settings.AutoStart.Mode.Title": "Método de inicio",
     "Settings.AutoStart.Mode.Description": "El modo estándar se gestiona en las aplicaciones de inicio de Windows; una tarea programada puede intentar iniciarse antes.",
     "Settings.AutoStart.Mode.Standard": "Estándar (recomendado)",

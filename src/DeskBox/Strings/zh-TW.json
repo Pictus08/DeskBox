@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "背景顏色",
+    "Widget.Background.Recent": "最近使用的顏色",
+    "Tray.CleanDesktop.Hide": "乾淨桌面：隱藏全部",
+    "Tray.CleanDesktop.Restore": "還原元件和圖示",
     "Settings.AutoStart.Mode.Title": "啟動方式",
     "Settings.AutoStart.Mode.Description": "標準方式可在 Windows「啟動應用程式」中管理；排程工作嘗試提早啟動。",
     "Settings.AutoStart.Mode.Standard": "標準（建議）",

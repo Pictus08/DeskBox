@@ -88,6 +88,7 @@ public sealed partial class QuickCaptureWidgetWindow
         };
         bool startRenameWhenClosed = false;
         bool showForegroundColorPickerWhenClosed = false;
+        bool showBackgroundColorPickerWhenClosed = false;
         renameItem.Click += (_, _) => startRenameWhenClosed = true;
         flyout.Closed += (_, _) =>
         {
@@ -100,6 +101,13 @@ public sealed partial class QuickCaptureWidgetWindow
                 DispatcherQueue.TryEnqueue(() =>
                     ShowFlyoutWithElevation(
                         BuildWidgetForegroundColorPickerFlyout(),
+                        QuickCaptureShell));
+            }
+            else if (showBackgroundColorPickerWhenClosed)
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                    ShowFlyoutWithElevation(
+                        BuildWidgetBackgroundColorPickerFlyout(),
                         QuickCaptureShell));
             }
         };
@@ -130,6 +138,8 @@ public sealed partial class QuickCaptureWidgetWindow
             _localizationService,
             SetWidgetForegroundModeOverride,
             () => showForegroundColorPickerWhenClosed = true));
+        flyout.Items.Add(CreateWidgetBackgroundMenu(
+            () => showBackgroundColorPickerWhenClosed = true));
 
         WidgetGroupMenuBuilder.Append(
             flyout,

@@ -726,6 +726,10 @@ public sealed partial class FileSurfaceContent
 
         var hostItems = new WidgetHostContextMenuOpeningEventArgs(flyout);
         HostContextMenuOpening?.Invoke(this, hostItems);
+        if (hostItems.BackgroundColorItem is not null)
+        {
+            flyout.Items.Add(hostItems.BackgroundColorItem);
+        }
         if (hostItems.TitleStyleItem is not null)
         {
             flyout.Items.Add(hostItems.TitleStyleItem);

@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "Background color",
+    "Widget.Background.Recent": "Recent colors",
+    "Tray.CleanDesktop.Hide": "Clean desktop: hide everything",
+    "Tray.CleanDesktop.Restore": "Restore widgets and icons",
     "Settings.AutoStart.Mode.Title": "Startup method",
     "Settings.AutoStart.Mode.Description": "Standard is managed in Windows Startup apps; a scheduled task can attempt an earlier start.",
     "Settings.AutoStart.Mode.Standard": "Standard (recommended)",

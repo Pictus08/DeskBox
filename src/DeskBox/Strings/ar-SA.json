@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "لون الخلفية",
+    "Widget.Background.Recent": "الألوان الأخيرة",
+    "Tray.CleanDesktop.Hide": "سطح مكتب نظيف: إخفاء الكل",
+    "Tray.CleanDesktop.Restore": "استعادة الأدوات والأيقونات",
     "Settings.AutoStart.Mode.Title": "طريقة بدء التشغيل",
     "Settings.AutoStart.Mode.Description": "تُدار الطريقة القياسية ضمن تطبيقات بدء التشغيل في Windows؛ ويمكن للمهمة المجدولة محاولة البدء مبكرًا.",
     "Settings.AutoStart.Mode.Standard": "قياسي (موصى به)",

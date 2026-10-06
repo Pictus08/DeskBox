@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "Couleur de fond",
+    "Widget.Background.Recent": "Couleurs récentes",
+    "Tray.CleanDesktop.Hide": "Bureau épuré : tout masquer",
+    "Tray.CleanDesktop.Restore": "Restaurer les widgets et les icônes",
     "Settings.AutoStart.Mode.Title": "Méthode de démarrage",
     "Settings.AutoStart.Mode.Description": "Le mode standard se gère dans les applications de démarrage Windows ; une tâche planifiée peut tenter un démarrage plus tôt.",
     "Settings.AutoStart.Mode.Standard": "Standard (recommandé)",

@@ -1,4 +1,4 @@
-﻿﻿using DeskBox.Models;
+﻿using DeskBox.Models;
 using DeskBox.Helpers;
 using DeskBox.Controls.WidgetContents;
 using DeskBox.Platform;
@@ -522,6 +522,13 @@ public sealed partial class WidgetManager
             source,
             async () =>
             {
+                if (IsCleanDesktopActive || source is "global-hotkey" or "clean-desktop" or
+                    "tray-icon" or "desktop-double-click" or "action-command")
+                {
+                    await ToggleCleanDesktopCoreAsync();
+                    return;
+                }
+
                 if (ShouldHideWidgetsForTrayToggle())
                 {
                     await SetAllWidgetsVisibleCoreAsync(false);
@@ -1508,6 +1515,7 @@ public sealed partial class WidgetManager
         CancelActiveTrayAnimationsAndRestorePositions();
         if (visible)
         {
+            RestoreDesktopIcons();
             App.CancelBackgroundMemoryCleanup();
             var candidates = _settingsService.Settings.Widgets
                 .Where(IsSessionCandidate)
@@ -2351,6 +2359,7 @@ public sealed partial class WidgetManager
     /// </summary>
     public void CloseAll()
     {
+        RestoreDesktopIcons();
         CancelAllWidgetSurfaceSwitches();
         StopTrayLayerRestoreMonitor();
         DisposeWidgetDetachPlacementPreview();

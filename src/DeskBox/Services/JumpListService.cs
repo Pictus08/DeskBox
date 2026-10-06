@@ -121,8 +121,7 @@ public static class JumpListService
                 case ArgToggleWidgets:
                     if (app.WidgetManager is { } wm)
                     {
-                        bool anyVisible = wm.HasVisibleWidgets;
-                        await wm.SetAllWidgetsVisibleAsync(!anyVisible);
+                        await wm.ToggleWidgetsFromTrayAsync("clean-desktop");
                     }
                     break;
 

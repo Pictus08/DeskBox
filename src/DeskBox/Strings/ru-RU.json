@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "Цвет фона",
+    "Widget.Background.Recent": "Недавние цвета",
+    "Tray.CleanDesktop.Hide": "Чистый рабочий стол: скрыть всё",
+    "Tray.CleanDesktop.Restore": "Восстановить виджеты и значки",
     "Settings.AutoStart.Mode.Title": "Способ автозапуска",
     "Settings.AutoStart.Mode.Description": "Стандартный режим управляется в автозагрузке Windows; задача планировщика может запускаться раньше.",
     "Settings.AutoStart.Mode.Standard": "Стандартный (рекомендуется)",

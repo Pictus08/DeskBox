@@ -9,6 +9,8 @@ public sealed class WidgetHostContextMenuOpeningEventArgs(
 
     public MenuFlyoutSubItem? TitleStyleItem { get; set; }
 
+    public MenuFlyoutSubItem? BackgroundColorItem { get; set; }
+
     public MenuFlyoutItem? CloseWidgetItem { get; set; }
 }
 

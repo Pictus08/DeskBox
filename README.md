@@ -1,5 +1,40 @@
 # DeskBox
 
+## Pictus08 community fork
+
+This fork is maintained by [Pictus08](https://github.com/Pictus08) and is based on
+[Tianyu199509/DeskBox](https://github.com/Tianyu199509/DeskBox), version **1.5.5**.
+DeskBox was created by **Tianyu Zhu**. The original authorship and
+[GPL-3.0 license](LICENSE) are preserved.
+
+### Improvements in this fork
+
+- **Per-widget background colors**, available from the title menu and by
+  right-clicking an empty area inside a file widget.
+- **Background-only transparency** from 0 to 100%, while icons and text retain
+  their opacity.
+- **The last 10 distinct colors**, shared between widgets and saved between
+  sessions, with the most recently used color first.
+- **Clean desktop mode:** F7, the tray icon, and `--toggle-widgets` hide and
+  restore both widgets and Windows desktop icons. Original icon visibility is
+  preserved, with recovery on the next launch after an interrupted session.
+
+**Uso y compilación en español:** [Guía de la versión personalizada](LOCAL-CUSTOMIZATIONS.md).
+
+The custom version has been built and exercised on Windows 11 x64, including
+124 targeted tests for background settings, persistence, settings contracts,
+file-widget menus, and localization. Build instructions are in the guide above.
+The download links in the upstream documentation below point to official
+DeskBox releases; build this fork to use these additions.
+
+### Upstream project
+
+The original project currently welcomes ideas and prototypes through Issues
+and Discussions while external pull requests are paused. See its
+[contribution policy](CONTRIBUTING.md).
+
+---
+
 **A free, open-source Windows desktop organizer with native-feeling WinUI 3 widgets.**
 
 English | [简体中文](README.zh-CN.md)

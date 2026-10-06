@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "Hintergrundfarbe",
+    "Widget.Background.Recent": "Zuletzt verwendete Farben",
+    "Tray.CleanDesktop.Hide": "Desktop aufräumen: alles ausblenden",
+    "Tray.CleanDesktop.Restore": "Widgets und Symbole wiederherstellen",
     "Settings.AutoStart.Mode.Title": "Startmethode",
     "Settings.AutoStart.Mode.Description": "Standard wird über die Windows-Autostart-Apps verwaltet; eine geplante Aufgabe kann einen früheren Start versuchen.",
     "Settings.AutoStart.Mode.Standard": "Standard (empfohlen)",

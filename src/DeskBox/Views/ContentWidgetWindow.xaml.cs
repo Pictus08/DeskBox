@@ -618,13 +618,12 @@ public sealed partial class ContentWidgetWindow : WidgetWindowBase, IDesktopWidg
         double surfaceOpacity = Math.Clamp(SettingsService.Settings.WidgetOpacity, 0.0, 1.0);
         var accentColor = App.Current.ThemeService?.GetEffectiveAccentColor()
             ?? AccentColorHelper.DefaultAccentColor;
-        string materialType = WindowsCompatibilityService.ResolveWidgetMaterialType(
-            SettingsService.Settings.WidgetMaterialType);
+        string materialType = EffectiveWidgetMaterialType;
 
         // Simplified layering: only apply surface color overlay for Solid mode.
         if (materialType is SettingsService.WidgetMaterialTypeSolid && !IsSolidColorBackdropActive)
         {
-            var surfaceColor = WidgetMaterialVisualCalculator.BuildContentSolidSurfaceColor(
+            var surfaceColor = CustomWidgetBackground ?? WidgetMaterialVisualCalculator.BuildContentSolidSurfaceColor(
                 isDark,
                 accentColor,
                 surfaceOpacity);

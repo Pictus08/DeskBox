@@ -286,6 +286,7 @@ public sealed partial class ContentWidgetWindow
         bool showCloseWhenClosed = false;
         IDisposable? closeWidgetFlyoutHandoff = null;
         bool showForegroundColorPickerWhenClosed = false;
+        bool showBackgroundColorPickerWhenClosed = false;
         rename.Click += (_, _) => startRenameWhenClosed = true;
         flyout.Closed += (_, _) =>
         {
@@ -303,6 +304,13 @@ public sealed partial class ContentWidgetWindow
                 DispatcherQueue.TryEnqueue(() =>
                     ShowFlyoutWithInteraction(
                         BuildWidgetForegroundColorPickerFlyout(),
+                        ContentWidgetShell));
+            }
+            else if (showBackgroundColorPickerWhenClosed)
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                    ShowFlyoutWithInteraction(
+                        BuildWidgetBackgroundColorPickerFlyout(),
                         ContentWidgetShell));
             }
         };
@@ -333,6 +341,8 @@ public sealed partial class ContentWidgetWindow
             App.Current.LocalizationService,
             SetWidgetForegroundModeOverride,
             () => showForegroundColorPickerWhenClosed = true));
+        flyout.Items.Add(CreateWidgetBackgroundMenu(
+            () => showBackgroundColorPickerWhenClosed = true));
 
         if (_config.WidgetKind is WidgetKind.File)
         {
@@ -389,6 +399,9 @@ public sealed partial class ContentWidgetWindow
     private void ProvideWidgetActionsForContentMenu(
         WidgetHostContextMenuOpeningEventArgs e)
     {
+        bool showBackgroundColorPickerWhenClosed = false;
+        e.BackgroundColorItem = CreateWidgetBackgroundMenu(
+            () => showBackgroundColorPickerWhenClosed = true);
         e.TitleStyleItem = WidgetChromeMenuBuilder.Create(
             _config,
             _descriptor,
@@ -416,6 +429,13 @@ public sealed partial class ContentWidgetWindow
             {
                 QueueCloseWidgetFlyout(closeWidgetFlyoutHandoff);
                 closeWidgetFlyoutHandoff = null;
+            }
+            else if (showBackgroundColorPickerWhenClosed)
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                    ShowFlyoutWithInteraction(
+                        BuildWidgetBackgroundColorPickerFlyout(),
+                        ContentWidgetShell));
             }
         };
         e.CloseWidgetItem = closeWidget;

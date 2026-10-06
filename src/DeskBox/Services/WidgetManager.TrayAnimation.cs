@@ -1,4 +1,4 @@
-﻿﻿// Copyright (c) DeskBox. All rights reserved.
+﻿// Copyright (c) DeskBox. All rights reserved.
 
 using DeskBox.Models;
 using DeskBox.Helpers;
@@ -44,6 +44,7 @@ public sealed partial class WidgetManager
     private async Task<bool?> RaiseWidgetsFromTrayCoreAsync(
         string source = "raise-from-tray")
     {
+        RestoreDesktopIcons();
         using var perfScope = PerformanceLogger.Measure("WidgetManager.RaiseWidgetsFromTray");
         if (WidgetLayerService.UsesDesktopPinnedMode())
         {

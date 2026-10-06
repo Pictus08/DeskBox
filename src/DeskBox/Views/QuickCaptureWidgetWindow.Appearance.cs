@@ -94,12 +94,12 @@ public sealed partial class QuickCaptureWidgetWindow
         double surfaceOpacity = Math.Clamp(ViewModel.WidgetOpacity, 0.0, 1.0);
         var accentColor = App.Current.ThemeService?.GetEffectiveAccentColor()
             ?? AccentColorHelper.DefaultAccentColor;
-        string materialType = _settingsService.Settings.WidgetMaterialType;
+        string materialType = EffectiveWidgetMaterialType;
 
         // Simplified layering: only apply surface color overlay for Solid mode.
         if (materialType is SettingsService.WidgetMaterialTypeSolid && !IsSolidColorBackdropActive)
         {
-            var surfaceColor = BuildFrostedSurfaceColor(isDark, accentColor, surfaceOpacity);
+            var surfaceColor = CustomWidgetBackground ?? BuildFrostedSurfaceColor(isDark, accentColor, surfaceOpacity);
             BackgroundPlate.Background = GetOrUpdateSolidColorBrush(BackgroundPlate.Background, surfaceColor);
         }
         else

@@ -62,6 +62,27 @@ public sealed class SettingsServiceTests : IDisposable
     }
 
     [Fact]
+    public async Task SaveAndReload_PreservesRecentBackgroundPaletteAndIndependentOpacity()
+    {
+        var service = new SettingsService(_settingsRoot);
+        await service.LoadAsync();
+        var widget = new WidgetConfig { Name = "Custom background" };
+        var color = Windows.UI.Color.FromArgb(255, 0x12, 0x34, 0x56);
+        WidgetBackgroundSettings.SetColor(widget, color);
+        WidgetBackgroundSettings.SetOpacity(widget, 0.35);
+        WidgetBackgroundSettings.RememberColor(service.Settings, color);
+        service.Settings.Widgets.Add(widget);
+        await service.SaveAsync();
+
+        var reloaded = new SettingsService(_settingsRoot);
+        await reloaded.LoadAsync();
+        Assert.Equal(new[] { "#123456" }, WidgetBackgroundSettings.GetRecentColors(reloaded.Settings));
+        var restoredWidget = Assert.Single(reloaded.Settings.Widgets.Where(item => item.Id == widget.Id));
+        Assert.Equal(color, WidgetBackgroundSettings.GetColor(restoredWidget));
+        Assert.Equal(0.35, WidgetBackgroundSettings.GetOpacity(restoredWidget));
+    }
+
+    [Fact]
     public async Task SaveCheckedAsync_FailureDuringSaveReportsFailureAndKeepsLastGoodStoreUsable()
     {
         var service = new SettingsService(_settingsRoot);

@@ -36,6 +36,9 @@ public sealed class WidgetShellSettingsSlice
     /// <summary>Custom widget foreground color in <c>#RRGGBB</c> form.</summary>
     public string WidgetForegroundColor { get; set; } = "#F5F5F5";
 
+    /// <summary>Up to ten distinct background colors, most recently used first.</summary>
+    public List<string>? RecentWidgetBackgroundColors { get; set; }
+
     /// <summary>
     /// Border color mode for widget windows.
     /// Valid values: <c>"Neutral"</c>, <c>"Accent"</c>, <c>"None"</c>.

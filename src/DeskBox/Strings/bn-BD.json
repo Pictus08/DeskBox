@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "পটভূমির রং",
+    "Widget.Background.Recent": "সাম্প্রতিক রং",
+    "Tray.CleanDesktop.Hide": "পরিষ্কার ডেস্কটপ: সব লুকান",
+    "Tray.CleanDesktop.Restore": "উইজেট ও আইকন ফিরিয়ে আনুন",
     "Settings.AutoStart.Mode.Title": "স্টার্টআপ পদ্ধতি",
     "Settings.AutoStart.Mode.Description": "স্ট্যান্ডার্ড পদ্ধতি Windows-এর স্টার্টআপ অ্যাপে পরিচালিত হয়; নির্ধারিত কাজ আগে চালু হওয়ার চেষ্টা করতে পারে।",
     "Settings.AutoStart.Mode.Standard": "স্ট্যান্ডার্ড (প্রস্তাবিত)",

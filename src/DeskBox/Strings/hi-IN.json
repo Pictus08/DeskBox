@@ -1,4 +1,8 @@
 {
+    "Widget.Background.Menu": "पृष्ठभूमि का रंग",
+    "Widget.Background.Recent": "हाल के रंग",
+    "Tray.CleanDesktop.Hide": "साफ़ डेस्कटॉप: सब कुछ छिपाएँ",
+    "Tray.CleanDesktop.Restore": "विजेट और आइकन वापस दिखाएँ",
     "Settings.AutoStart.Mode.Title": "स्टार्टअप का तरीका",
     "Settings.AutoStart.Mode.Description": "मानक तरीका Windows के स्टार्टअप ऐप्स में प्रबंधित होता है; शेड्यूल किया गया कार्य पहले शुरू होने का प्रयास कर सकता है।",
     "Settings.AutoStart.Mode.Standard": "मानक (अनुशंसित)",
